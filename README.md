@@ -4,7 +4,7 @@ Node.js basic tutorial **learnyounode** from [NodeSchool](https://nodeschool.io/
 
 > [https://github.com/workshopper/learnyounode](https://github.com/workshopper/learnyounode)
 
-![complete](./README_img/learnyounode-complete.png)
+<img src="./README_img/learnyounode-complete.png" alt="complete" width="650px" />
 
 ## 01. HELLO WORLD [🔗](./hello-world.js)
 
@@ -40,8 +40,9 @@ console.log(process.argv); // ['node', '/path/to/your/command-line-test.js', '1'
 
 > synchronous filesystem operation
 
-### # fs module (Node core library)
+### # fs module
 
+- Node core library
 - all synchronous (or blocking) filesystem methods in the fs module end with `Sync`
 - `fs.readFileSync('/path/to/file')` : read a file synchronous, returns a Buffer object
   - supply `utf8` as the second argument : returns String instead of a Buffer
@@ -51,8 +52,44 @@ console.log(process.argv); // ['node', '/path/to/your/command-line-test.js', '1'
 
 > asynchronous filesystem operation
 
-### # fs module (Node core library) - readFile
+### # fs module - readFile
 
-- `fs.readFile('/path/to/file', /* callback function */)` : read a file asynchronous
+- `fs.readFile('/path/to/file', callback)` : read a file asynchronous
 - callback signature : `function callback (err, data) { /* ... */ }`, `data` is a Buffer object
 - supply `utf8` as the second argument and put the callback as the third argument : `data` is a String instead of a Buffer
+
+## 05. FILTERED LS [🔗](./filtered-ls.js)
+
+> list of files
+
+### # fs module - readdir
+
+- `fs.readdir('/path/to/dir', callback)` : read the contents of a directory asynchronous
+- callback signature : `function callback (err, list) { /* ... */ }`, `list` is an array of filename strings
+
+### # path module
+
+- Node core library
+- `extname` method : returns the extension of the path (ex. `.md`)
+
+## 06. MAKE IT MODULAR [🔗](./make-it-modular.js)
+
+> module system
+
+### # create module
+
+- to define a single function export : `module.exports = function (args) { /* ... */ }`
+- to use new module : `const mymodule = require('./mymodule.js')`
+
+## 07. HTTP CLIENT [🔗](./http-client.js)
+
+> HTTP GET request
+
+### # http module
+
+- Node core library
+- `http.get(url, callback)` : performs an HTTP GET request
+- callback signature : `function callback (response) { /* ... */ }`, `response` object is a Node Stream object
+- Node Stream
+  - emit events like `'data'`, `'error'`, `'end'` ... : `response.on('data', function (data) { /* ... */ })`
+  - has `setEncoding()` method : `response.setEncoding('utf-8')`
