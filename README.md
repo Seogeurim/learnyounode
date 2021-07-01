@@ -146,3 +146,65 @@ server.listen(8000);
 - `date.getDate()` // returns the day of month
 - `date.getHours()`
 - `date.getMinutes()`
+
+## 11. HTTP FILE SERVER
+
+> HTTP server that serves file
+
+### # http module - create server
+
+- `http.createServer(callback)` : create an HTTP server, returns an instance of server
+- callback signature : `function callback (request, response) { /* ... */ }`
+- `request`, `response` : Node streams
+- must call `server.listen(portNumber)` to start listening on a particular port
+
+### # fs module - createReadStream
+
+- `fs.createReadStream(file)` : create a stream representing the file, returns stream object
+- `src.pipe(dst)` : pipe the data from the `src` stream to the `dst` stream
+
+## 12. HTTP UPPERCASERER
+
+> HTTP POST request
+
+### # through2-map package
+
+- `map` function : create a transform stream data
+- takes a chunk of data and returns a chunk of data
+
+```js
+/* a chunk character reverser */
+const map = require('through2-map');
+inStream
+  .pipe(
+    map(function (chunk) {
+      return chunk.toString().split('').reverse().join('');
+    })
+  )
+  .pipe(outStream);
+```
+
+## 13. HTTP JSON API SERVER
+
+> HTTP server that serves JSON data
+
+### # url module
+
+> "route" requests for endpoints
+
+- Node core library
+- `new URL(url)` : parse content of `url` and provide an object with helpful properties
+
+```bash
+$ node -pe "new URL('/test?q=1', 'http://example.com')"
+```
+
+### # JSON data
+
+- `JSON.stringify()` : converts a JavaScript object or value to a JSON string
+- set Content-Type : `res.writeHead(200, { 'Content-Type': 'application/json' })`
+
+### # Date
+
+- `new Date().toISOString()` : print dates in ISO format
+- `new Date().getTime()` : get UNIX epoch time in milliseconds
