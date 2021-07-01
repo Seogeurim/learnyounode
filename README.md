@@ -93,3 +93,56 @@ console.log(process.argv); // ['node', '/path/to/your/command-line-test.js', '1'
 - Node Stream
   - emit events like `'data'`, `'error'`, `'end'` ... : `response.on('data', function (data) { /* ... */ })`
   - has `setEncoding()` method : `response.setEncoding('utf-8')`
+
+## 08. HTTP COLLECT
+
+> collect data across multiple events
+
+### # bl(Buffer List) module / concat-stream module
+
+- both have a stream piped in to them and will collect the data
+- `response.pipe(bl(function (err, data) { /* ... */ }))`
+- `response.pipe(concatStream(function (data) { /* ... */ }))`
+- `data` is a Buffer object
+
+## 09. JUGGLING ASYNC
+
+> collect data from multiple URLs in sequence
+
+### # more convenient
+
+- [`async`](https://www.npmjs.com/package/async)
+- [`run-parallel`](https://www.npmjs.com/package/run-parallel)
+
+## 10. TIME SERVER
+
+> write a TCP time server
+
+### # net module
+
+- Node core library
+- `net.createServer(listener)` : create raw TCP server, returns an instance of server
+- listener signature : `function listener (socket) { /* ... */ }`
+- `socket` object : a Node duplex Stream, can be both read from and
+  written to
+  - `socket.write(data)` : write data to the socket
+  - `socket.end()` : close the socket
+  - `socket.end(data)` : write data and close the socket
+- must call `server.listen(portNumber)` to start listening on a particular port
+
+```js
+/* A typical Node TCP server */
+const net = require('net');
+const server = net.createServer(function (socket) {
+  // socket handling logic
+});
+server.listen(8000);
+```
+
+### # create date - `new Date()` object
+
+- `date.getFullYear()`
+- `date.getMonth()` // starts at 0
+- `date.getDate()` // returns the day of month
+- `date.getHours()`
+- `date.getMinutes()`
