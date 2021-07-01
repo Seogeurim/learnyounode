@@ -94,7 +94,7 @@ console.log(process.argv); // ['node', '/path/to/your/command-line-test.js', '1'
   - emit events like `'data'`, `'error'`, `'end'` ... : `response.on('data', function (data) { /* ... */ })`
   - has `setEncoding()` method : `response.setEncoding('utf-8')`
 
-## 08. HTTP COLLECT
+## 08. HTTP COLLECT [🔗](./http-collect.js)
 
 > collect data across multiple events
 
@@ -105,7 +105,7 @@ console.log(process.argv); // ['node', '/path/to/your/command-line-test.js', '1'
 - `response.pipe(concatStream(function (data) { /* ... */ }))`
 - `data` is a Buffer object
 
-## 09. JUGGLING ASYNC
+## 09. JUGGLING ASYNC [🔗](./juggling-async.js)
 
 > collect data from multiple URLs in sequence
 
@@ -114,7 +114,7 @@ console.log(process.argv); // ['node', '/path/to/your/command-line-test.js', '1'
 - [`async`](https://www.npmjs.com/package/async)
 - [`run-parallel`](https://www.npmjs.com/package/run-parallel)
 
-## 10. TIME SERVER
+## 10. TIME SERVER [🔗](./time-server.js)
 
 > write a TCP time server
 
@@ -147,7 +147,7 @@ server.listen(8000);
 - `date.getHours()`
 - `date.getMinutes()`
 
-## 11. HTTP FILE SERVER
+## 11. HTTP FILE SERVER [🔗](./http-file-server.js)
 
 > HTTP server that serves file
 
@@ -163,7 +163,7 @@ server.listen(8000);
 - `fs.createReadStream(file)` : create a stream representing the file, returns stream object
 - `src.pipe(dst)` : pipe the data from the `src` stream to the `dst` stream
 
-## 12. HTTP UPPERCASERER
+## 12. HTTP UPPERCASERER [🔗](./http-uppercaserer.js)
 
 > HTTP POST request
 
@@ -184,7 +184,7 @@ inStream
   .pipe(outStream);
 ```
 
-## 13. HTTP JSON API SERVER
+## 13. HTTP JSON API SERVER [🔗](./http-json-api-server.js)
 
 > HTTP server that serves JSON data
 
